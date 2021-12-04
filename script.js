@@ -1,0 +1,110 @@
+var white = document.getElementsByClassName("whiteout");
+var aboutTitles = document.getElementsByClassName("about-title");
+var popups = document.getElementsByClassName("popup-card");
+var leftArrow = document.getElementsByClassName("arrow left")[0];
+var rightArrow = document.getElementsByClassName("arrow right")[0];
+var projContainer = document.getElementById("projects-container");
+var projectItems = document.getElementsByClassName("projects-item");
+var upDownArrows = document.getElementsByClassName("up-down-arrow");
+
+function myPopup(id){
+    white[0].style.display = "block";
+    if(id==="proj1"){
+        document.getElementById("timeremind").classList.add("open");
+    }
+    if(id=="proj2"){
+        document.getElementById("badger").classList.add("open");
+    }
+    if(id=="proj3"){
+        document.getElementById("site").classList.add("open");
+    }
+}
+
+function myClosePopups(){
+    for(i=0; i<popups.length;i++){
+        if(popups[i].style.display != "none"){
+            popups[i].classList.remove("open");
+            white[0].style.display = "none";
+        }
+    };
+}
+
+function isVisibleInScroll(element){
+    var projRect = projContainer.getBoundingClientRect();
+    var elemRect = element.getBoundingClientRect();
+
+    return elemRect.left >= projRect.left && elemRect.right <= projRect.right;
+}
+
+function checkVisibility(){
+
+    if(isVisibleInScroll(projectItems[0])){
+        leftArrow.style.visibility = "hidden";
+        rightArrow.style.visibility = "visible";
+    }
+
+    else if(isVisibleInScroll(projectItems[projectItems.length-1])){
+        leftArrow.style.visibility = "visible";
+        rightArrow.style.visibility = "hidden";
+    }
+
+    else{
+        leftArrow.style.visibility = "visible";
+        rightArrow.style.visibility = "visible"; 
+    }
+}
+
+function myScroll(position){
+    if(position === 0){
+        for(let i=1; i<projectItems.length; i++){
+            if(isVisibleInScroll(projectItems[i])){
+                projectItems[i-1].scrollIntoView({behavior: "smooth", inline:"start", block:"center"});
+                break;
+            }
+        }
+    }
+    if(position === 1){
+        for(let i=0; i<projectItems.length-1; i++){
+            if(isVisibleInScroll(projectItems[i])){
+                projectItems[i+1].scrollIntoView({behavior: "smooth", inline:"start", block:"center"});
+                break;
+            }
+        }
+    }
+    
+}
+
+//CV section collapsibles
+
+for(let i=0; i<aboutTitles.length; i++){
+    aboutTitles[i].addEventListener("click", function(){
+        var content = this.nextElementSibling;
+        if(content.classList.contains("expanded")){
+            this.classList.remove("clicked");
+            content.classList.remove("expanded");
+            upDownArrows[i].innerHTML = "&darr;";
+        }
+        else{
+            this.classList.add("clicked");
+            content.classList.add("expanded");
+            upDownArrows[i].innerHTML = "&uarr;";
+        }
+    });
+
+}
+
+//Projects section
+
+//Highlight the right arrow to show scroll function on first slide
+if(isVisibleInScroll(projectItems[0])){
+    projSection = document.getElementById("projects");
+    projSection.addEventListener("mouseover", function(){
+        document.getElementsByClassName("arrow-button")[1].style.background = "#F4B4A4";
+        setTimeout(() => {  document.getElementsByClassName("arrow-button")[1].style.background = "var(--melon)"; }, 1000);
+    })
+};
+
+// Check which arrow should display
+projContainer.addEventListener("scroll", checkVisibility);
+
+
