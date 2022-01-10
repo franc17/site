@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&display=swap" rel="stylesheet">
     
@@ -13,18 +14,24 @@
 </head>
 
 <!-- Nav bar -->
-<nav>
-    <h1 id="logo"><a href=#landing>Frances Jackson-Barry</a></h1> 
-        <!-- TODO replace name with image -->
-    <ul>
-        <li><a href=#about>About</a></li>
-        <li><a href=#cv>CV</a></li>
-        <li><a href=#projects>Projects</a></li>
-        <li><a href=#contact>Contact</a></li>
-    </ul>
-</nav>
+
 
 <body>
+<nav id="nav">
+    <div id="logodiv">
+    <h1 id="logo"><a href=#landing>Frances Jackson-Barry</a></h1> 
+    </div>
+    <div id="menudiv">
+    <ul id="navmenu">
+        <li class="navitem"><a href=#about>About</a></li>
+        <li class="navitem"><a href=#cv>CV</a></li>
+        <li class="navitem"><a href=#projects>Projects</a></li>
+        <li class="navitem"><a href=#contact>Contact</a></li>
+    </ul>
+    </div>
+    <button class="burger-menu" id="burger-menu" onclick="showMenu()"> &#9776; </button>
+    
+</nav>
 <div class="whiteout" onclick="myClosePopups()"></div>
 <!--Scrolling container -->
 <div class="container">
@@ -40,12 +47,12 @@
     <section id="about">
         <h2 class="title">About</h2>
         <p>My interests have always been split between arts and sciences, so discovering coding through work, and finding it satisfies my need to create and my insatiable hunger for problem solving has been game-changing.</p>
-        <p>After some time learning on my own, I pursued an MSc in Computer Science in order to fully understand the foundations of programming logic, execution and design.</p>
-        <p>Having graduated with a distinction and a keen interest in web and mobile app development, I am currently<br> looking to join a creative, ambitious, small to medium-sized team as a grad/junior developer.
+        <p>After time spent studying on my own, I pursued an MSc in Computer Science in order to fully understand the foundations of programming logic, execution and design. I continue to build on this through personal projects that make use of additional languages and frameworks.</p>
+        <p>Having graduated with a distinction and a keen interest in web and mobile app development, I am currently looking to join a creative, ambitious, small to medium-sized team as a grad/junior developer.
         </p>
         <p>Outside of coding I like making clothes, listening to podcasts, and hanging out with my guinea-pigs.</p>
         <p>Check me out on:</p>
-        <h3><a href="https://github.com/franc17" target="_blank">GitHub</a> | <a href="https://play.google.com/store/apps/dev?id=8802553198266437840" targt="_blank">Google Play</a> | <a href="https://www.hackerrank.com/Franc_17" target="_blank">HackerRank</a> | <a href="www.linkedin.com/in/frances-jackson-barry" target="_blank">LinkedIn</a></h3>
+        <h3><a href="https://github.com/franc17" target="_blank">GitHub</a> | <a href="https://play.google.com/store/apps/dev?id=8802553198266437840" target="_blank">Google Play</a> | <a href="https://www.hackerrank.com/Franc_17" target="_blank">HackerRank</a> | <a href="https://www.linkedin.com/in/frances-jackson-barry/" target="_blank">LinkedIn</a></h3>
 
     </section>
 
@@ -108,7 +115,7 @@
                         <p>Primarily event and people management for busy and expanding courses department within an education agency. Main course was responsible for 1/3 annual company turnover, and grew year-on-year.</p>
                         <p><b>Front-end</b> editing and page building, first in HTML with Bootstrap then using Webflow after company migration to the service.</p>
                         <p>Understanding and debugging communications between front and back-end using PHP and JavaScript.</p>
-                        <p><b>redesign and testing</b> of our proprietary client management system during its upgrade onto Laravel framework.</p>
+                        <p><b>Redesign and testing</b> of our proprietary client management system during its upgrade onto Laravel framework.</p>
                         <p>Peri/Post-COVID shift to online courses. Personal design and control of our learning management platform using 3rd party LMS software integrated with APIs to our CMS back-end.</p>
                         <p>Project and people management using <b>Agile</b> methodologies.</p>
                     </div>
@@ -167,6 +174,7 @@
         <h2 class="title">Projects</h2>
         <h3 class="subtitle">Current side-projects and works-in-progress.</h3> 
         <p style="margin-top:5%;">Click through to view on GitHub / Google Play.</p>
+    
     <div id="projects-section">
         
         <div class="arrow left" onclick = "myScroll(0)">
@@ -255,7 +263,7 @@
                     </div>
                     <div class="project-right">
                         <div class="project-viewon">
-                            <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/franc17/site" target="_blank" rel="noopener noreferrer">
                                 <img src="images/GitHub.png"
                                 alt="GitHub symbol">
                             </a>
@@ -363,41 +371,128 @@
     </div>
     </section>
 
-    <!-- Contact section -->
-    
-    <section id="contact">
-        <h2 class="title">Contact</h2>
-        <div class="contact-items">
-            <figure>
-                <img class="contact-item" src="images/GitHub.png" alt="GitHub"/>
-                <figcaption>@franc17</figcaption>
-            </figure>
-            <figure>
-                <img class="contact-item" src="images/linkedin-bug.png" alt="LinkedIn"/>
-                <figcaption>Frances Jackson-Barry</figcaption>
-            </figure>
-            <figure>
-                <img class="contact-item" src="images/email.png" alt="Email"/>
-                <figcaption>hey@frances jacksonbarry.com</figcaption>
-            </figure>
+    <section id="projects-mobile">
+        <h2 class="title">Projects</h2>
+        <h3 class="subtitle">Current side-projects and works-in-progress.</h3> 
+        <div id="proj-section-mobile">
+
+            <div class="mobile-project">
+                <h2 class="title">
+                    TimeRemind Google Wear OS App
+                </h2>
+                <p>
+                    <ul>
+                        <li>Standalone WearOS app for smartwatches.</li>
+                        <li>Discreet recognisable vibration pattern to help users track time passing.</li>
+                        <li>Designed for neurodivergent users: no screen display = no distraction.</li>
+                    </ul>
+                </p>
+                <div class="mobile-container">
+                    <a href="https://github.com/franc17/time-remind" target="_blank" rel="noopener noreferrer" >
+                        <img src="images/GitHub-small.png"
+                        alt="GitHub symbol" style="max-height: 100%;">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.frances.timeremind" target="_blank" rel="noopener noreferrer">
+                        <img src="images/googleplay.png"
+                        alt="Google Play badge"  style="max-height: 100%;">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mobile-project">
+                <h2 class="title">
+                    Badger Android App
+                </h2>
+                <p>
+                    <ul>
+                        <li>Voice controlled reminder app for Android smartphones integrating Google Assistant.</li>
+                        <li>Custom conversational interface to set, snooze, and cancel spoken reminders.</li>
+                        <li>Reminders stored using Room persistence library over SQLite database.</li>
+                    </ul>
+                </p>
+                <div class="mobile-container">
+                    <a href="https://github.com/franc17/badger-app" target="_blank" rel="noopener noreferrer">
+                        <img src="images/GitHub.png"
+                        alt="GitHub symbol">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mobile-project">
+                <h2 class="title">
+                    Personal Website
+                </h2>
+                <p>
+                    <ul>
+                        <li>Site UI designed and developed from scratch.</li>
+                        <li>HTML and CSS enhanced with vanilla JavaScript for improved user experience.</li>
+                        <li>Extending previous experience of frameworks and site design software by writing code directly.</li>
+                    </ul>
+                </p>
+                <div class="mobile-container">
+                    <a href="https://github.com/franc17/site" target="_blank" rel="noopener noreferrer">
+                        <img src="images/GitHub.png"
+                        alt="GitHub symbol">
+                    </a>
+                </div>
+            </div>    
+        </div>
+        <div id="mobile-arrows">
+            <div class = "mobile-arrow" style="visibility: hidden;">
+                <button class="mobile-arrow-button">&lt;</button>
+            </div>
+            <div class = "mobile-arrow">
+                <button class="mobile-arrow-button">&gt;</button>
+            </div>
         </div>
     </section>
 
-    <section id="footer">
-        <div class="footer-contents">
-            <p>Site design © Frances Jackson-Barry 2021</p>
-            
-            <p>
-                Google Play and the Google Play logo are trademarks of Google LLC.
-                <br>
-                GitHub octocat logo © 2021 GitHub, Inc.
-                <br>
-                Email icon made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
-                <br>
-                All other images are my own.
-            </p>
+    <!-- Contact section -->
+    
+    <section id="contact" style="padding: 0; justify-content: space-between;">
+        <div id="contact-div">
+            <h2 class="title">Contact</h2>
+                <div class="contact-items">
+                    <figure>
+                        <a href="https://github.com/franc17" target="_blank">
+                            <img class="contact-item" src="images/GitHub.png" alt="GitHub"/>
+                            <figcaption>@franc17</figcaption>
+                        </a>
+                    </figure>
+                    <figure>
+                        <a href="https://www.linkedin.com/in/frances-jackson-barry/" target="_blank">
+                            <img class="contact-item" src="images/linkedin-bug.png" alt="LinkedIn"/>
+                            <figcaption>Frances Jackson-Barry</figcaption>
+                        </a>
+                    </figure>
+                    <figure>
+                        <a href="mailto:hey@francesjacksonbarry.com">
+                            <img class="contact-item" src="images/email.png" alt="Email"/>
+                            <figcaption>hey@frances jacksonbarry.com</figcaption>
+                        </a>
+                    </figure>
+                </div>
+        </div>
+
+        <div id="footer">
+            <div class="footer-contents">
+                <p>Site design © Frances Jackson-Barry 2021</p>
+                
+                <p>
+                    Google Play and the Google Play logo are trademarks of Google LLC.
+                    <br>
+                    GitHub octocat logo © 2021 GitHub, Inc.
+                    <br>
+                    Email icon made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+                    <br>
+                    All other images are my own.
+                </p>
+            </div>
         </div>
     </section>
+
+    
+    
 
 </div>
 </body>

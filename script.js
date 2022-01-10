@@ -1,3 +1,8 @@
+var navbar = document.getElementById("nav");
+var navmenu = document.getElementById("navmenu");
+var navitems = document.getElementsByClassName("navitem");
+var burgermenu = document.getElementById("burger-menu");
+
 var white = document.getElementsByClassName("whiteout");
 var aboutTitles = document.getElementsByClassName("about-title");
 var popups = document.getElementsByClassName("popup-card");
@@ -6,6 +11,17 @@ var rightArrow = document.getElementsByClassName("arrow right")[0];
 var projContainer = document.getElementById("projects-container");
 var projectItems = document.getElementsByClassName("projects-item");
 var upDownArrows = document.getElementsByClassName("up-down-arrow");
+
+var mobileScroll = document.getElementById("proj-section-mobile");
+
+function showMenu(){
+    if(!navmenu.classList.contains("show")){
+        navmenu.classList.add("show");
+    }
+    else{
+        navmenu.classList.remove("show");
+    }
+}
 
 function myPopup(id){
     white[0].style.display = "block";
@@ -73,6 +89,37 @@ function myScroll(position){
     }
     
 }
+
+//Mobile scrolling arrows
+
+var mobileArrows = document.getElementsByClassName("mobile-arrow-button");
+var mobileProjects = document.getElementsByClassName("mobile-project");
+
+function isVisibleInMobileScroll(element){
+    var elemRect = element.getBoundingClientRect();
+    var mobileRect = mobileScroll.getBoundingClientRect();
+
+    return elemRect.left >= mobileRect.left && elemRect.right <= mobileRect.right;
+}
+
+function mobileCheckVisibility(){
+    if(isVisibleInMobileScroll(mobileProjects[0])){
+        mobileArrows[0].style.visibility = "hidden";
+        mobileArrows[1].style.visibility = "visible";
+    }
+
+    else if(isVisibleInMobileScroll(mobileProjects[mobileProjects.length-1])){
+        mobileArrows[0].style.visibility = "visible";
+        mobileArrows[1].style.visibility = "hidden";
+    }
+
+    else{
+        mobileArrows[0].style.visibility = "visible";
+        mobileArrows[1].style.visibility = "visible";
+    }
+}
+
+mobileScroll.addEventListener("scroll", mobileCheckVisibility);
 
 //CV section collapsibles
 
